@@ -1,0 +1,8 @@
+{
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "javascript.format.enable": false,
+  "editor.formatOnSave": true,
+  "javascript.implicitProjectConfig.checkJs": true
+}
