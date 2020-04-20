@@ -70,7 +70,9 @@ export class CarsController {
     const { id } = res.locals.user;
 
     try {
-      const allBookings = await BookingRepo.getAllByUserId({ userId: id });
+      const allBookings = await BookingRepo.getAllByUserId({
+        userId: id.toString(),
+      });
 
       return AppResponse.success(res, { data: { allBookings } });
     } catch (errors) {
