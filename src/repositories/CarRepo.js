@@ -1,8 +1,8 @@
-// import Sequelize from 'sequelize';
-
+import Sequelize from 'sequelize';
 import Repository from './Repository';
 
-// const { Op } = Sequelize;
+const { Op } = Sequelize;
+
 /**
  * User Repo
  */
@@ -18,5 +18,23 @@ export class CarRepo extends Repository {
     });
 
     return cars;
+  }
+
+  /**
+   * @description Method to get a user by email
+   * @param {string} plateNumber
+   *
+   * @returns {Promise<*>} Response
+   */
+  static async getByPlateNumber(plateNumber) {
+    const user = this.Car.findOne({
+      where: {
+        [Op.or]: [{ plateNumber }],
+      },
+    }).catch((error) => {
+      throw new Error(error);
+    });
+
+    return user;
   }
 }

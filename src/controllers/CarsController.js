@@ -40,6 +40,14 @@ export class CarsController {
     const { id } = res.locals.user;
 
     try {
+      const car = await CarRepo.getByPlateNumber(plateNumber);
+
+      if (!car) {
+        return AppResponse.badRequest(res, {
+          message: 'This car does not exist',
+        });
+      }
+
       const bookingResult = await BookingRepo.create({
         plateNumber,
         userId: id,

@@ -4,7 +4,7 @@ import Sequelize from 'sequelize';
 // Model
 import model from '../db/models';
 
-const { User, Car, Booking } = model;
+const { User, Cars, Booking } = model;
 
 /**
  * Repository
@@ -25,7 +25,7 @@ class Repository {
    * @type {Model}
    */
   static get Car() {
-    return Car;
+    return Cars;
   }
 
   /**

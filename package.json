@@ -5,9 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "babel-node src/db/seeders/index.js",
+    "seed:cars": "babel-node src/db/seeders/cars.js",
+    "seed:users": "babel-node src/db/seeders/users.js",
     "migrate": "npx sequelize db:migrate",
+    "migrate:drop": "npx sequelize db:migrate:undo:all",
+    "migrate:reset": "npx sequelize db:migrate:undo:all && npm run migrate",
     "start:dev": "nodemon --watch src --watch .env --watch package.json --watch .eslintrc src/index.js --exec babel-node --presets es2015,stage-2",
     "start": "npm run build && npm run migrate && node build/index.js",
+    "restart": "npm run build && npm run migrate:reset && node build/index.js",
     "build": "babel ./src -d build/"
   },
   "author": "",
